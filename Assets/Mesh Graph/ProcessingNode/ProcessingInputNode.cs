@@ -1,8 +1,8 @@
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine.UIElements;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class MeshEditorGraphView : GraphView
+public class ProcessingInputNode : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
