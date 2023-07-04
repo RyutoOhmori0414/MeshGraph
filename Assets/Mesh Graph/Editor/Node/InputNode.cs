@@ -1,16 +1,26 @@
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class InputNode : Node
+public class InputNode : GraphNode
 {
+    private Port _outputPort;
+
     // 入力を受け取るポート
     public InputNode()
     {
+        _processingNode = new ProcessingInputNode();
+
         title = "Input";
 
-        var outputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(Mesh));
-        outputPort.portName = "Out";
-        outputPort.portColor = Color.green;
-        outputContainer.Add(outputPort);
+        _outputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(Mesh));
+        _outputPort.portName = "Out";
+        _outputPort.portColor = Color.green;
+        outputContainer.Add(_outputPort);
+    }
+
+    public override void OnSave()
+    {
+        _processingNode.Set(outputNodes: _outputPort.connections.Select(x => ((GraphNode)x.input.node).ProcessingNode).ToList());
     }
 }

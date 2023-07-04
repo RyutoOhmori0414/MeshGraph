@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 
-public class LogNode : ExecuteNode
+public class LogNode : GraphNode
 {
     private Port _inputString;
 
@@ -25,7 +25,8 @@ public class LogNode : ExecuteNode
         outputContainer.Add(outputPort);
     }
 
-    public override void Execute()
+    public override void OnSave()
     {
+        throw new System.NotImplementedException();
     }
 }
