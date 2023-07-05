@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProcessingOutputNode : MonoBehaviour
+public class ProcessingOutputNode : ProcessingNode
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private List<ProcessingNode> _inputNodes = new List<ProcessingNode>();
 
-    // Update is called once per frame
-    void Update()
+    public override void Set(List<(ProcessingNode, Type, string)> inputNodes = null, List<(ProcessingNode, Type, string)> outputNodes = null)
     {
-        
+        throw new NotImplementedException();
     }
 }

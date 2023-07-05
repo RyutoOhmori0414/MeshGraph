@@ -1,27 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProcessingInputNode : ProcessingNode
+public class ProcessingInputNode : ProcessingNode, IMeshExecute
 {   
-    private List<ProcessingNode> _outputNodes = new List<ProcessingNode>();
+    private List<(ProcessingNode, Type, string)> _outputNodes = new List<(ProcessingNode, Type, string)>();
+    private Mesh _mesh;
 
-    public override void Excecute<T>(T value)
+    public Mesh Execute(string portName = "")
     {
-        ToNextNodes(value);
+        return _mesh.Copy();
     }
 
-    public override void Set(List<ProcessingNode> inputNodes, List<ProcessingNode> outputNodes)
+    public override void Set(List<(ProcessingNode, Type, string)> inputNodes = null, List<(ProcessingNode, Type, string)> outputNodes = null)
     {
-        _outputNodes = outputNodes;
+        throw new NotImplementedException();
     }
-
-    protected override void ToNextNodes<T>(T value)
-    {
-        foreach (var node in _outputNodes)
-        {
-            node.Excecute(value);
-        }
-    }
-
 }

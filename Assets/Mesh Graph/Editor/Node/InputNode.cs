@@ -21,6 +21,6 @@ public class InputNode : GraphNode
 
     public override void OnSave()
     {
-        _processingNode.Set(outputNodes: _outputPort.connections.Select(x => ((GraphNode)x.input.node).ProcessingNode).ToList());
+        _processingNode.Set();
     }
 }
