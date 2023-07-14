@@ -35,5 +35,6 @@ public class MeshGraphEditorWindow : EditorWindow
     {
         var graphView = new MeshGraphView(this);
         rootVisualElement.Add(graphView);
+        graphView.ScriptableMeshGraph = _currentMeshGraph;
     }
 }

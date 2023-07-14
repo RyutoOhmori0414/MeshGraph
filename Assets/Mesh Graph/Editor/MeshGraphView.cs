@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class MeshGraphView : GraphView
 {
+    private ScriptableMeshGraph _scriptableMeshGraph;
+    public ScriptableMeshGraph ScriptableMeshGraph { set => _scriptableMeshGraph = value; }
     public MeshGraphView(MeshGraphEditorWindow editor) : base()
     {
         styleSheets.Add(Resources.Load<StyleSheet>("GridBackGround"));
